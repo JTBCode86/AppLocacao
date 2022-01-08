@@ -17,7 +17,7 @@ namespace AppLocacao
             Console.Write("Pickup (dd/MM/yyyy hh:mm): ");
             DateTime start = DateTime.ParseExact(Console.ReadLine(),"dd/MM/yyyy HH:mm",CultureInfo.InvariantCulture);
             
-            Console.Write("Return (dd/MM/yyyy hh:mm):  ");
+            Console.Write("Return (dd/MM/yyyy hh:mm): ");
             DateTime finish = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
 
             Console.Write("Enter price per hour: ");
@@ -28,7 +28,7 @@ namespace AppLocacao
 
             CarRental carRental = new CarRental(start, finish, new Vehicle(model));
 
-            RentalService rentalService = new RentalService(hour, day);
+            RentalService rentalService = new RentalService(hour, day, new BrazilTaxService());
             rentalService.ProcessInvoice(carRental);
 
             Console.WriteLine("INVOICE: ");
